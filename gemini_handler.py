@@ -64,6 +64,14 @@ class GeminiHandler:
 
             return answer
         except Exception as e:
+            err = str(e)
+            if '429' in err or 'RESOURCE_EXHAUSTED' in err or 'quota' in err.lower():
+                return (
+                    "⏳ Gemini AI 무료 한도를 초과했습니다.\n\n"
+                    "• 잠시 후 다시 시도해주세요 (보통 1분 후 리셋)\n"
+                    "• 일일 한도 초과 시 내일 다시 이용 가능합니다.\n"
+                    "• 지속적 사용을 원하시면 Gemini API 유료 플랜을 고려해보세요."
+                )
             return f"⚠️ Gemini 응답 중 오류가 발생했습니다: {e}"
 
     def analyze_stock(self, corp_name: str, financials: dict) -> str:
@@ -115,4 +123,11 @@ class GeminiHandler:
             )
             return response.text
         except Exception as e:
+            err = str(e)
+            if '429' in err or 'RESOURCE_EXHAUSTED' in err or 'quota' in err.lower():
+                return (
+                    "⏳ Gemini AI 무료 한도를 초과했습니다.\n\n"
+                    "• 잠시 후 다시 시도해주세요 (보통 1분 후 리셋)\n"
+                    "• 일일 한도 초과 시 내일 다시 이용 가능합니다."
+                )
             return f"⚠️ Gemini 분석 중 오류가 발생했습니다: {e}"
