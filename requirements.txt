@@ -2,5 +2,4 @@ python-telegram-bot>=20.0
 google-genai
 python-dotenv
 OpenDartReader
-FinanceDataReader
 pandas
