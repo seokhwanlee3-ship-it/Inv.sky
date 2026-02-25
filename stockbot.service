@@ -5,9 +5,10 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-User=ubuntu
-WorkingDirectory=/home/ubuntu/stock-bot
-ExecStart=/usr/bin/python3 telegram_bot.py
+User=seokhwanlee3
+WorkingDirectory=/home/seokhwanlee3/stock-bot
+ExecStart=/home/seokhwanlee3/stock-bot/venv/bin/python telegram_bot.py
+EnvironmentFile=/home/seokhwanlee3/stock-bot/.env
 Restart=always
 RestartSec=5
 StandardOutput=journal
